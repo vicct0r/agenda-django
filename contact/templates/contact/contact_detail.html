@@ -1,0 +1,57 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block title %}Contato: {{ contato.first_name }} {{ contato.last_name }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <!-- Título Centralizado -->
+    <h3 class="text-primary fw-bold text-center mb-5">Detalhes do Contato</h3>
+
+    <!-- Card Principal -->
+    <div class="card shadow-sm border-0 mb-5">
+        <div class="row g-0 align-items-center">
+            <!-- Foto do Contato -->
+            <div class="col-md-4 text-center py-4">
+                <div class="img-container rounded-circle border border-2 p-2 mx-auto" style="width: 200px; height: 200px; overflow: hidden;">
+                    {% if contato.picture %}
+                        <img src="{{ contato.picture.thumbnail.url }}" class="rounded-circle img-fluid" alt="Foto de {{ contato.first_name }}" style="object-fit: cover; width: 100%; height: 100%;">
+                    {% else %}
+                        <img src="{% static 'img/default-avatar.png' %}" class="rounded-circle img-fluid" alt="Foto padrão" style="object-fit: cover; width: 100%; height: 100%;">
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Informações do Contato -->
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h4 class="card-title text-primary fw-bold mb-4">{{ contato.first_name }} {{ contato.last_name }}</h4>
+                    <ul class="list-unstyled mb-4">
+                        <li><strong>Telefone:</strong> {{ contato.phone }}</li>
+                        <li>
+                            <strong>Email:</strong>
+                            <a href="mailto:{{ contato.email }}" class="text-decoration-none">{{ contato.email }}</a>
+                        </li>
+                        {% if contato.description %}
+                        <li><strong>Descrição:</strong> {{ contato.description }}</li>
+                        {% endif %}
+                        {% if contato.category %}
+                        <li><strong>Categoria:</strong> {{ contato.category }}</li>
+                        {% endif %}
+                    </ul>
+                    <p class="card-text text-muted">
+                        <small><strong>Criado em:</strong> {{ contato.created_date|date:"d/m/Y H:i" }}</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão Voltar -->
+    <div class="text-center">
+        <a href="{% url 'contact:base_home' %}" class="btn btn-primary px-4 py-2">
+            Voltar para Contatos
+        </a>
+    </div>
+</div>
+{% endblock %}

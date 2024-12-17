@@ -1,0 +1,41 @@
+<div class="container my-5">
+    {% if page_obj %}
+        <h3 class="text-primary fw-bold mb-4">Todos os contatos disponíveis</h3>
+        {% for contato in page_obj %}
+            <!-- Card de Contato -->
+            <div class="card mb-4 shadow-sm border-0 contact-card">
+                <div class="row g-0 align-items-center">
+                    <!-- Imagem -->
+                    <div class="col-md-3 d-flex justify-content-center">
+                        <div class="img-container rounded-circle border border-2">
+                            <img src="{{ contato.picture.thumbnail.url }}" alt="Foto de {{ contato.first_name }}">
+                        </div>
+                    </div>
+                    <!-- Detalhes do Contato -->
+                    <div class="col-md-9 break-word">
+                        <div class="card-body">
+                            <h5 class="card-title mb-2 fw-bold text-primary text-truncate-custom" title="{{ contato.first_name }} {{ contato.last_name }}">
+                                <a href="{% url 'contact:contact_detail' contato.id %}" class="text-decoration-none">
+                                    {{ contato.first_name }} {{ contato.last_name }}
+                                </a>
+                            </h5>
+                            <p class="card-text mb-1 text-truncate-custom" title="{{ contato.phone }}">
+                                <strong>Telefone:</strong> {{ contato.phone }}
+                            </p>
+                            <p class="card-text text-truncate-custom" title="{{ contato.email }}">
+                                <strong>Email:</strong> <a href="mailto:{{ contato.email }}" class="text-decoration-none">{{ contato.email }}</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <!-- Mensagem de Nenhum Contato -->
+        <div class="text-center py-5">
+            <h3 class="text-secondary fw-bold">Nenhum contato encontrado</h3>
+            <p class="text-muted">Por favor, verifique novamente mais tarde.</p>
+            <a href="{% url 'contact:base_home' %}" class="btn btn-primary mt-3">Voltar à Página Inicial</a>
+        </div>
+    {% endif %}
+</div>

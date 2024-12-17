@@ -23,7 +23,12 @@ class Contato(models.Model):
     created_date = models.DateTimeField(default=timezone.now) # não execute timezone, o django que será responsável por executa-lo
     description = models.TextField(blank=True)
     show = models.BooleanField(default=True)
-    picture = StdImageField(blank=True, upload_to='pictures/%Y/%m/')
+    picture = StdImageField(
+        default='pictures/default_avatar.png',
+        blank=True, 
+        upload_to='pictures/%Y/%m/',
+        variations={'thumbnail': {'width': 100, 'height': 100, 'crop': True}},
+    )
     category = models.ForeignKey(Category, verbose_name='category', on_delete=models.CASCADE, blank=True, null=True)
     owner = models.ForeignKey(User, verbose_name='owner', on_delete=models.SET_NULL, blank=True, null=True)
 
