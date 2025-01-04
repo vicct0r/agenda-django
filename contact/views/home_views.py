@@ -15,7 +15,6 @@ def home(request):
     context = {
         'page_obj': page_obj,
     }
-
     return render(request, 'global/base.html', context)
 
 
@@ -25,7 +24,6 @@ def detail(request, contact_id):
     context = {
         'contato': contato
     }
-
     return render(request, 'contact/contact_detail.html', context)
 
 
@@ -33,7 +31,7 @@ def search(request):
     search_value = request.GET.get('q', '').strip()
     if search_value == '':
         return(redirect('contact:base_home'))
-
+    
     contato = Contato.objects\
         .filter(show=True)\
         .filter(
@@ -52,5 +50,4 @@ def search(request):
     context = {
         'page_obj': page_obj
     }
-
     return render(request, 'global/base.html', context)

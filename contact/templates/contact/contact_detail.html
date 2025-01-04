@@ -47,8 +47,24 @@
         </div>
     </div>
 
-    <!-- Botão Voltar -->
+    <!-- Botões com Ícones (Editar e Apagar) -->
     <div class="text-center">
+        <!-- Botão Editar com Ícone -->
+        <a href="{% url 'contact:contact_update' contato.id %}" class="btn btn-light btn-sm me-2" title="Editar Contato">
+            <i class="bi bi-pencil-fill"></i>
+        </a>
+    
+        <!-- Botão Apagar com Ícone -->
+        <form action="{% url 'contact:contact_delete' contato.id %}" method="post" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-light btn-sm" title="Apagar Contato" onclick="return confirm('Tem certeza que deseja remover este contato?');">
+                <i class="bi bi-trash-fill text-danger"></i>
+            </button>
+        </form>
+    </div>
+
+    <!-- Botão Voltar -->
+    <div class="text-center mt-4">
         <a href="{% url 'contact:base_home' %}" class="btn btn-primary px-4 py-2">
             Voltar para Contatos
         </a>
