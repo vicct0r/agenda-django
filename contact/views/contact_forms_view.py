@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
+from django.http import HttpResponseNotAllowed
 from django.db.models import Q
 from contact.models import Contato
 from contact.forms import ContatoForm
 
 
-def create(request):
+def create_contact(request):
     form_action = reverse('contact:contact_create') # URL do formulario de criação de Contato
     # este if é para caso o usuario tenha enviado os dados
     # ou seja, data=request.POST, data é o primeiro parâmetro que ContatoForm() recebe
@@ -31,7 +32,7 @@ def create(request):
     return render(request, 'contact/create.html', context)
 
 
-def update(request, contact_id):
+def update_contact(request, contact_id):
     form_action = reverse('contact:contact_update', args=[contact_id]) # gerando uma URL dinamica para update do contato especifico
     contact = get_object_or_404(Contato, id=contact_id) # encontrando o usuario que queremos editar pelo id que recebemos no corpo da URL (contato/3/update)
 
@@ -49,4 +50,13 @@ def update(request, contact_id):
     }
     return render(request, 'contact/create.html', context)
 
+
+def delete_contact(request, contact_id):
+    contact = get_object_or_404(Contato, id=contact_id)
     
+
+    if request.method == 'POST':
+        contact.delete()
+        return redirect('contact:base_home')
+    
+    return HttpResponseNotAllowed(['POST'])
