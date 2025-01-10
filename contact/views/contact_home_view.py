@@ -1,4 +1,13 @@
 from django.shortcuts import render
+from contact.models import Contato
 
 def index(request):
-    return render(request, 'contact/index.html')
+    contatos = Contato.objects.order_by('-id')
+
+    context = {
+        'contatos': contatos,
+    }
+
+
+
+    return render(request, 'contact/index.html', context)

@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <!-- Meta e Título -->
     <meta charset="UTF-8">
@@ -12,13 +13,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
+
 <body>
     <!-- Início do Wrapper -->
     <div class="wrapper">
 
         <!-- Navbar -->
         {% include 'global/partials/_navbar.html' %}
-
+        {% include 'global/partials/_messages.html' %}
         <!-- Conteúdo Principal -->
         <!-- Seção Contatos -->
         <div class="content">
@@ -37,4 +39,5 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

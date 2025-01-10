@@ -18,7 +18,7 @@ class Category(models.Model):
 class Contato(models.Model):
     first_name = models.CharField('nome', max_length=100)
     last_name = models.CharField('sobrenome', max_length=100)
-    phone = models.CharField('telefone', max_length=12, unique=True)
+    phone = models.CharField('telefone', max_length=20, unique=True)
     email = models.EmailField('email', max_length=90)
     created_date = models.DateTimeField(default=timezone.now) # não execute timezone, o django que será responsável por executa-lo
     description = models.TextField(blank=True)
