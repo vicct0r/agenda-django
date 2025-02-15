@@ -8,6 +8,4 @@ def index(request):
         'contatos': contatos,
     }
 
-
-
     return render(request, 'contact/index.html', context)

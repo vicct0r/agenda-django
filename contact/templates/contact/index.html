@@ -1,10 +1,68 @@
 {% extends 'global/base.html' %}
 
-{% block title %}Contato{% endblock %}
+{% block title %}Contato - Página Inicial{% endblock %}
 
 {% block content %}
-    <div class="container text-center">
-        <h2>Index</h2>
-        <p>Você está na página Index da aplicação Contato.</p>
+<div class="container my-5">
+    <!-- Logo e Premissa -->
+    <div class="text-center my-5">
+        <h1 class="display-4">Bem-vindo ao Contato</h1>
+        <p class="lead">O lugar perfeito para organizar seus contatos! Visualize, adicione e gerencie contatos facilmente, acessível para todos os usuários como uma lista telefônica universal.</p>
     </div>
+
+    <!-- Carousel -->
+    <div id="homeCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://plus.unsplash.com/premium_photo-1661277666101-01fb123f2a4c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="Contato">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Gerencie seus Contatos</h5>
+                    <p>Adicione, visualize e gerencie sua lista telefônica universal.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cards de Conteúdo -->
+    <div class="row text-center mb-5">
+        <div class="col-md-4">
+            <div class="card shadow">
+                <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Registro">
+                <div class="card-body">
+                    <h5 class="card-title">Registrar-se</h5>
+                    <p class="card-text">Crie sua conta para começar a organizar seus contatos de forma prática.</p>
+                    <a href="#" class="btn btn-primary">Registrar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow">
+                <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Login">
+                <div class="card-body">
+                    <h5 class="card-title">Login</h5>
+                    <p class="card-text">Já possui uma conta? Faça login e comece a gerenciar seus contatos.</p>
+                    <a href="#" class="btn btn-secondary">Login</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow">
+                <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Lista de Contatos">
+                <div class="card-body">
+                    <h5 class="card-title">Lista de Contatos</h5>
+                    <p class="card-text">Acesse nossa lista universal de contatos e veja todos os cadastros disponíveis.</p>
+                    <a href="#" class="btn btn-success">Ver Contatos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sessão de Registro -->
+    <div class="text-center py-5 bg-light">
+        <h4 class="mb-3">Ainda não possui uma conta?</h4>
+        <p class="lead">Faça parte da <strong>NexoNet</strong> e comece a organizar seus contatos agora mesmo!</p>
+        <a href="#" class="btn btn-outline-primary btn-lg">Registrar-se</a>
+    </div>
+</div>
 {% endblock %}
+    

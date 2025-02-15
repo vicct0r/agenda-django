@@ -2,10 +2,16 @@
 <div class="container mt-3">
     {% for message in messages %}
     <div class="alert 
-        {% if message.tags %}
-            alert-{{ message.tags }}
-        {% else %}
+        {% if message.tags == 'error' %}
+            alert-danger
+        {% elif message.tags == 'success' %}
+            alert-success
+        {% elif message.tags == 'warning' %}
+            alert-warning
+        {% elif message.tags == 'info' %}
             alert-info
+        {% else %}
+            alert-secondary
         {% endif %} 
         alert-dismissible fade show" role="alert">
         {{ message }}
